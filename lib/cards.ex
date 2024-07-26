@@ -57,8 +57,14 @@ defmodule Cards do
   end
 
   def create_hand(hand_size) do
-    deck = Cards.create_deck
-    deck = Cards.shuffle(deck)
-    hand = Cards.deal(deck, hand_size)
+    # without pipe
+    # deck = Cards.create_deck
+    # deck = Cards.shuffle(deck)
+    # hand = Cards.deal(deck, hand_size)
+
+    # pipe: use chain function with use latest value returned as first argument
+    Cards.create_deck
+    |> Cards.shuffle
+    |> Cards.deal(hand_size)
   end
 end
